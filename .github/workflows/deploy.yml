@@ -23,11 +23,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Move files to call-log directory
-        run: |
-          mkdir -p ./dist/call-log
-          mv /.dist/* ./dist/call-log/
-
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
