@@ -1,8 +1,18 @@
+import { useState } from "react";
 import "./App.css";
-import Form from "./components/Form";
 
 function App() {
-  return <Form />;
+  const [name, setName] = useState("");
+
+  return (
+    <form>
+      <input
+        type="text"
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+      />
+    </form>
+  );
 }
 
 export default App;
