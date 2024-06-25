@@ -35,7 +35,7 @@ function App() {
 
   const handleSubmit = async () => {
     const data = {
-      Now(),
+      datetime: new Date().toString(),
       contactSource,
       contactType,
       dealerType,
