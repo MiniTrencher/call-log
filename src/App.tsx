@@ -44,7 +44,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "https://vercel-backend-rg3tw3xhj-jharr35s-projects.vercel.app/api/send-to-sheets",
+        "https://vercel-backend-jharr35s-projects.vercel.app/api/send-to-sheets",
         {
           method: "POST",
           headers: {
