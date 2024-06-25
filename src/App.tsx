@@ -2,6 +2,7 @@ import "./App.css";
 import { Button, ChakraProvider, Flex, Text, VStack } from "@chakra-ui/react";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import { useState } from "react";
+import { getOrCreateUserId } from "./assets/services/userId";
 
 function App() {
   const [contactSource, setContactSource] = useState<string | null>(null);
@@ -34,6 +35,7 @@ function App() {
   };
 
   const handleSubmit = async () => {
+    const userId = getOrCreateUserId();
     const data = {
       contactDate: new Date().toString(),
       contactSource,
@@ -41,6 +43,7 @@ function App() {
       dealerType,
       contactHowType,
       contactDetail,
+      userId,
     };
 
     try {
