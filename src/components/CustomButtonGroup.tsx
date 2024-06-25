@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 interface Props {
   buttonNames: string[];
   activeButton?: string;
-  onButtonClick?: (name: string) => void;
+  onButtonClick?: (name: string | null) => void;
 }
 
 const CustomButtonGroup = ({
