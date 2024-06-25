@@ -1,11 +1,13 @@
 import "./App.css";
 import { ChakraProvider } from "@chakra-ui/react";
-import ToggleButton from "./components/ToggleButton";
+import CustomButton from "./components/CustomButton";
 
 function App() {
   return (
     <ChakraProvider>
-      <ToggleButton />
+      <div>
+        <CustomButton />
+      </div>
     </ChakraProvider>
   );
 }
