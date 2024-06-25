@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 
-const ToggleButton = () => {
+const CustomButton = () => {
   const [name, setName] = useState("Button Not Clicked");
   const [color, setColor] = useState("gray");
 
