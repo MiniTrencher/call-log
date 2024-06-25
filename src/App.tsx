@@ -1,18 +1,8 @@
-import { useState } from "react";
 import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
-  const [name, setName] = useState("");
-
-  return (
-    <form>
-      <input
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-    </form>
-  );
+  return <ChakraProvider></ChakraProvider>;
 }
 
 export default App;
