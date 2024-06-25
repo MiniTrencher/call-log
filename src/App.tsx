@@ -33,14 +33,35 @@ function App() {
     setContactDetail(name);
   };
 
-  const handleSubmit = () => {
-    console.log({
+  const handleSubmit = async () => {
+    const data = {
       contactSource,
       contactType,
       dealerType,
       contactHowType,
       contactDetail,
-    });
+    };
+
+    try {
+      const response = await fetch(
+        "https://vercel-backend-rg3tw3xhj-jharr35s-projects.vercel.app/api/send-to-sheets",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Data successfully sent to Google Sheets");
+      } else {
+        console.error("Error sending data to Google Sheets");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const allSelectionsMade =
