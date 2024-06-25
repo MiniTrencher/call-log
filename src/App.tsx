@@ -57,19 +57,19 @@ function App() {
           <Text fontSize="5xl">Contact Source</Text>
           <CustomButtonGroup
             buttonNames={["New", "Quiz Lead", "Existing"]}
-            activeButton={contactSource}
+            activeButton={contactSource || undefined}
             onButtonClick={handleContactSourceClick}
           />
           <Text fontSize="5xl">Contact Type</Text>
           <CustomButtonGroup
             buttonNames={["Dealer", "End User"]}
-            activeButton={contactType}
+            activeButton={contactType || undefined}
             onButtonClick={handleContactTypeClick}
           />
           {contactType === "Dealer" && (
             <CustomButtonGroup
               buttonNames={["Retail", "Retail & Rental", "Rental"]}
-              activeButton={dealerType}
+              activeButton={dealerType || undefined}
               onButtonClick={handleDealerTypeClick}
             />
           )}
@@ -81,7 +81,7 @@ function App() {
               "Email",
               "In Person",
             ]}
-            activeButton={contactHowType}
+            activeButton={contactHowType || undefined}
             onButtonClick={handleContactHowClick}
           />
           {contactHowType && (
@@ -91,7 +91,7 @@ function App() {
                 "New attempt to contact",
                 "Recurring contact",
               ]}
-              activeButton={contactDetail}
+              activeButton={contactDetail || undefined}
               onButtonClick={handleContactDetailClick}
             />
           )}
