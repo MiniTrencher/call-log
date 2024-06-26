@@ -42,7 +42,7 @@ const GoogleSheetCharts = ({ refreshKey }: Props) => {
           style={{ width: "100%", height: "auto" }}
         />
       </Box>
-      <Box>
+      <Box border="1px" borderColor="gray.300">
         <img
           src={`${chartUrls[3]}&refresh=${refreshKey}`}
           alt="Chart 4"
