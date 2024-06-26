@@ -21,21 +21,21 @@ const GoogleSheetCharts = ({ refreshKey }: Props) => {
       gridGap={10}
       rowGap={50}
     >
-      <Box border={1} gridColumn="2">
+      <Box border="1px" borderColor="gray.300" gridColumn="2">
         <img
           src={`${chartUrls[0]}&refresh=${refreshKey}`}
           alt="Chart 1"
           style={{ width: "100%", height: "auto" }}
         />
       </Box>
-      <Box border={1}>
+      <Box border="1px" borderColor="gray.300">
         <img
           src={`${chartUrls[1]}&refresh=${refreshKey}`}
           alt="Chart 2"
           style={{ width: "100%", height: "auto" }}
         />
       </Box>
-      <Box border={1}>
+      <Box border="1px" borderColor="gray.300">
         <img
           src={`${chartUrls[2]}&refresh=${refreshKey}`}
           alt="Chart 3"
@@ -49,7 +49,7 @@ const GoogleSheetCharts = ({ refreshKey }: Props) => {
           style={{ width: "100%", height: "auto" }}
         />
       </Box>
-      <Box border={1}>
+      <Box border="1px" borderColor="gray.300">
         <img
           src={`${chartUrls[4]}&refresh=${refreshKey}`}
           alt="Chart 5"
