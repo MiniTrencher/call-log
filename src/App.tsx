@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
 import sendToSheets from "./assets/services/sendToSheets";
 import CustomAlert from "./components/CustomAlert/CustomAlert";
+import GoogleSheetCharts from "./components/GoogleSheetCharts";
 
 function App() {
   const [contactSource, setContactSource] = useState<string | null>(null);
@@ -107,55 +108,65 @@ function App() {
         onClose={() => setIsAlertVisible(false)}
       />
       <Flex justify="center" minHeight="100vh" marginTop={20}>
-        <VStack spacing={10}>
-          <Text fontSize="5xl">Contact Source</Text>
-          <CustomButtonGroup
-            buttonNames={["New", "Quiz Lead", "Existing"]}
-            activeButton={contactSource || undefined}
-            onButtonClick={handleContactSourceClick}
-          />
-          <Text fontSize="5xl">Contact Type</Text>
-          <CustomButtonGroup
-            buttonNames={["Dealer", "End User"]}
-            activeButton={contactType || undefined}
-            onButtonClick={handleContactTypeClick}
-          />
-          {contactType === "Dealer" && (
+        <Flex
+          width="40%"
+          flexDirection="column"
+          alignItems="center"
+          marginTop={40}
+        >
+          <VStack spacing={10}>
+            <Text fontSize="5xl">Contact Source</Text>
             <CustomButtonGroup
-              buttonNames={["Retail", "Retail & Rental", "Rental"]}
-              activeButton={dealerType || undefined}
-              onButtonClick={handleDealerTypeClick}
+              buttonNames={["New", "Quiz Lead", "Existing"]}
+              activeButton={contactSource || undefined}
+              onButtonClick={handleContactSourceClick}
             />
-          )}
-          <Text fontSize="5xl">How did you contact</Text>
-          <CustomButtonGroup
-            buttonNames={[
-              "Phone (Voice)",
-              "Phone (Text)",
-              "Email",
-              "In Person",
-            ]}
-            activeButton={contactHowType || undefined}
-            onButtonClick={handleContactHowClick}
-          />
-          {contactHowType && (
+            <Text fontSize="5xl">Contact Type</Text>
+            <CustomButtonGroup
+              buttonNames={["Dealer", "End User"]}
+              activeButton={contactType || undefined}
+              onButtonClick={handleContactTypeClick}
+            />
+            {contactType === "Dealer" && (
+              <CustomButtonGroup
+                buttonNames={["Retail", "Retail & Rental", "Rental"]}
+                activeButton={dealerType || undefined}
+                onButtonClick={handleDealerTypeClick}
+              />
+            )}
+            <Text fontSize="5xl">How did you contact</Text>
             <CustomButtonGroup
               buttonNames={[
-                "Reply to customer contact",
-                "New attempt to contact",
-                "Recurring contact",
+                "Phone (Voice)",
+                "Phone (Text)",
+                "Email",
+                "In Person",
               ]}
-              activeButton={contactDetail || undefined}
-              onButtonClick={handleContactDetailClick}
+              activeButton={contactHowType || undefined}
+              onButtonClick={handleContactHowClick}
             />
-          )}
+            {contactHowType && (
+              <CustomButtonGroup
+                buttonNames={[
+                  "Reply to customer contact",
+                  "New attempt to contact",
+                  "Recurring contact",
+                ]}
+                activeButton={contactDetail || undefined}
+                onButtonClick={handleContactDetailClick}
+              />
+            )}
 
-          {allSelectionsMade && (
-            <Button colorScheme="gray" onClick={handleSubmit}>
-              Submit
-            </Button>
-          )}
-        </VStack>
+            {allSelectionsMade && (
+              <Button colorScheme="gray" onClick={handleSubmit}>
+                Submit
+              </Button>
+            )}
+          </VStack>
+        </Flex>
+        <Flex width="50%" flexDirection="column" alignItems="center">
+          <GoogleSheetCharts />
+        </Flex>
       </Flex>
     </ChakraProvider>
   );
