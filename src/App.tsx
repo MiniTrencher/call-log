@@ -1,7 +1,7 @@
 import "./App.css";
 import { Button, ChakraProvider, Flex, Text, VStack } from "@chakra-ui/react";
 import CustomButtonGroup from "./components/CustomButtonGroup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
 import sendToSheets from "./assets/services/sendToSheets";
 import CustomAlert from "./components/CustomAlert/CustomAlert";
@@ -73,14 +73,18 @@ function App() {
       setAlertText(`Error: ${error.message}`);
     } finally {
       setIsAlertVisible(true);
+    }
+  };
 
+  useEffect(() => {
+    if (isAlertVisible) {
       const timer = setTimeout(() => {
         setIsAlertVisible(false);
       }, 3000);
 
       return () => clearTimeout(timer);
     }
-  };
+  }, [isAlertVisible]);
 
   const allSelectionsMade =
     contactSource &&
