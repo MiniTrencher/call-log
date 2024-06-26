@@ -8,7 +8,6 @@ async function sendToSheets(data: {
   userId: string;
 }) {
   let response;
-  let responseData = null;
 
   try {
     response = await fetch(
@@ -24,7 +23,7 @@ async function sendToSheets(data: {
 
     if (response.ok) {
       console.log("Data successfully sent to Google Sheets");
-      responseData = await response.json();
+      return true;
     } else {
       console.error("Error sending data to Google Sheets");
     }
@@ -32,9 +31,7 @@ async function sendToSheets(data: {
     console.error("Error:", error);
   }
 
-  console.log("Response:", response);
-  console.log("Send to sheets:", responseData);
-  return responseData;
+  return false;
 }
 
 export default sendToSheets;

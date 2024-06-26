@@ -51,8 +51,7 @@ function App() {
     try {
       const responseData = await sendToSheets(data);
 
-      console.log(responseData);
-      if (responseData && responseData.ok) {
+      if (responseData) {
         //send alert that says submission successful
         alert("Submission successful");
       } else {
