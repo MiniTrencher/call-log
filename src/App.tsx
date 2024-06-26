@@ -47,6 +47,7 @@ function App() {
       userId,
     };
 
+    console.log("Sending to Google Sheets...");
     try {
       const responseData = await sendToSheets(data);
 
