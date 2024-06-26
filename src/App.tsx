@@ -4,6 +4,7 @@ import CustomButtonGroup from "./components/CustomButtonGroup";
 import { useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
 import sendToSheets from "./assets/services/sendToSheets";
+import CustomAlert from "./components/CustomAlert/CustomAlert";
 
 function App() {
   const [contactSource, setContactSource] = useState<string | null>(null);
@@ -11,6 +12,10 @@ function App() {
   const [dealerType, setDealerType] = useState<string | null>(null);
   const [contactHowType, setContactHowType] = useState<string | null>(null);
   const [contactDetail, setContactDetail] = useState<string | null>(null);
+  const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [alertText, setAlertText] = useState<string>("");
+  const [alertTitle, setAlertTitle] = useState<string>("");
 
   const handleContactSourceClick = (name: string | null) => {
     setContactSource(name);
@@ -53,14 +58,27 @@ function App() {
 
       if (responseData) {
         //send alert that says submission successful
-        alert("Submission successful");
+        setIsError(false);
+        setAlertTitle("Success");
+        setAlertText("Data submitted successfully.");
       } else {
         //send alert that submission was NOT successful
-        alert("Submission was NOT successful");
+        setIsError(true);
+        setAlertTitle("Failure");
+        setAlertText("Data submission failed.");
       }
     } catch (error) {
-      console.error("Error;", error);
-      alert("Submission failed due to an error");
+      setIsError(true);
+      setAlertTitle("Error");
+      setAlertText(`Error: ${error.message}`);
+    } finally {
+      setIsAlertVisible(true);
+
+      const timer = setTimeout(() => {
+        setIsAlertVisible(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
     }
   };
 
@@ -73,6 +91,13 @@ function App() {
 
   return (
     <ChakraProvider>
+      <CustomAlert
+        alertText={alertText}
+        alertTitle={alertTitle}
+        isError={isError}
+        isVisible={isAlertVisible}
+        onClose={() => setIsAlertVisible(false)}
+      />
       <Flex justify="center" minHeight="100vh" marginTop={20}>
         <VStack spacing={10}>
           <Text fontSize="5xl">Contact Source</Text>
