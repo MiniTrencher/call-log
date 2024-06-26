@@ -1,5 +1,12 @@
 import "./App.css";
-import { Button, ChakraProvider, Flex, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ChakraProvider,
+  Flex,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import { useEffect, useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
@@ -166,6 +173,13 @@ function App() {
             )}
           </VStack>
         </Flex>
+        <Box
+          width="1px"
+          height="100%"
+          backgroundColor="gray.300"
+          marginLeft={5}
+          marginRight={5}
+        />
         <Flex width="50%" flexDirection="column" alignItems="center">
           <GoogleSheetCharts refreshKey={refreshKey} />
         </Flex>
