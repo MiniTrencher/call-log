@@ -3,6 +3,7 @@ import { Button, ChakraProvider, Flex, Text, VStack } from "@chakra-ui/react";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import { useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
+import sendToSheets from "./assets/services/sendToSheets";
 
 function App() {
   const [contactSource, setContactSource] = useState<string | null>(null);
@@ -47,24 +48,18 @@ function App() {
     };
 
     try {
-      const response = await fetch(
-        "https://vercel-backend-jharr35s-projects.vercel.app/api/send-to-sheets",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const responseData = await sendToSheets(data);
 
-      if (response.ok) {
-        console.log("Data successfully sent to Google Sheets");
+      if (responseData && responseData.ok) {
+        //send alert that says submission successful
+        alert("Submission successful");
       } else {
-        console.error("Error sending data to Google Sheets");
+        //send alert that submission was NOT successful
+        alert("Submission was NOT successful");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error;", error);
+      alert("Submission failed due to an error");
     }
   };
 
