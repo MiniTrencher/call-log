@@ -70,7 +70,11 @@ function App() {
     } catch (error) {
       setIsError(true);
       setAlertTitle("Error");
-      setAlertText(`Error: ${error.message}`);
+      if (error instanceof Error) {
+        setAlertText(`Error: ${error.message}`);
+      } else {
+        setAlertText("An unknown error occurred.");
+      }
     } finally {
       setIsAlertVisible(true);
     }
