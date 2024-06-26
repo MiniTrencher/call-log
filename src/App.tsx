@@ -17,6 +17,7 @@ function App() {
   const [isError, setIsError] = useState<boolean>(false);
   const [alertText, setAlertText] = useState<string>("");
   const [alertTitle, setAlertTitle] = useState<string>("");
+  const [refreshKey, setRefreshKey] = useState<number>(0);
 
   const handleContactSourceClick = (name: string | null) => {
     setContactSource(name);
@@ -62,6 +63,7 @@ function App() {
         setIsError(false);
         setAlertTitle("Success");
         setAlertText("Data submitted successfully.");
+        setRefreshKey((prev) => prev + 1);
       } else {
         //send alert that submission was NOT successful
         setIsError(true);
