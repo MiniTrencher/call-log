@@ -167,7 +167,7 @@ function App() {
           </VStack>
         </Flex>
         <Flex width="50%" flexDirection="column" alignItems="center">
-          <GoogleSheetCharts />
+          <GoogleSheetCharts refreshKey={refreshKey} />
         </Flex>
       </Flex>
     </ChakraProvider>
