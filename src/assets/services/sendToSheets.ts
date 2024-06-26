@@ -32,6 +32,7 @@ async function sendToSheets(data: {
     console.error("Error:", error);
   }
 
+  console.log("Send to sheets:", responseData);
   return responseData;
 }
 
