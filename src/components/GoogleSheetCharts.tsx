@@ -23,7 +23,7 @@ const GoogleSheetCharts = ({ refreshKey }: Props) => {
   const [totalContacts, setTotalContacts] = useState<number>(0);
 
   const fetchTotalContacts = useCallback(async () => {
-    const data = await getFromSheets("Sheet2!A1");
+    const data = await getFromSheets("Sheet2!C1");
     if (data) {
       setTotalContacts(Number(data));
     }

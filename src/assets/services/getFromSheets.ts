@@ -3,7 +3,7 @@ import axios from "axios";
 const getFromSheets = async (range: string): Promise<string | null> => {
   try {
     const response = await axios.get(
-      "https://vercel-backend-jharr35s-projects.vercel.app/api/getCellData",
+      "https://vercel-backend-jharr35s-projects.vercel.app/api/get-from-sheets",
       {
         params: { range },
       }
