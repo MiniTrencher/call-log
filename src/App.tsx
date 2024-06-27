@@ -1,12 +1,5 @@
 import "./App.css";
-import {
-  Box,
-  Button,
-  ChakraProvider,
-  Flex,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, ChakraProvider, Flex, Text, VStack } from "@chakra-ui/react";
 import CustomButtonGroup from "./components/CustomButtonGroup";
 import { useEffect, useState } from "react";
 import { getOrCreateUserId } from "./assets/services/userId";
