@@ -173,13 +173,6 @@ function App() {
             )}
           </VStack>
         </Flex>
-        <Box
-          width="1px"
-          height="100%"
-          backgroundColor="gray.300"
-          marginLeft={5}
-          marginRight={5}
-        />
         <Flex width="50%" flexDirection="column" alignItems="center">
           <GoogleSheetCharts refreshKey={refreshKey} />
         </Flex>
