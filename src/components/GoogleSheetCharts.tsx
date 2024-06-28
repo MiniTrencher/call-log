@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, Text } from "@chakra-ui/react";
 import CustomButtonGroup from "./CustomButtonGroup";
 import { useEffect, useState, useCallback } from "react";
-import getFromSheets from "../assets/services/getFromSheets";
+import { getFromSheets, filterSheets } from "../assets/services/getFromSheets";
 
 interface Props {
   refreshKey: number;
@@ -159,7 +159,9 @@ const GoogleSheetCharts = ({ refreshKey }: Props) => {
   }, [FilterData, fetchTotalContacts]);
 
   useEffect(() => {
-    //GetFromSheets(startDate, endDate);
+    if (startDate !== null && endDate !== null) {
+      filterSheets(startDate, endDate);
+    }
   }, [startDate, endDate]);
 
   const handleCalendarClick = (name: string | null) => {

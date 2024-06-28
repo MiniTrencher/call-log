@@ -44,8 +44,13 @@ function App() {
 
   const handleSubmit = async () => {
     const userId = getOrCreateUserId();
+    const currentYear = new Date().getFullYear();
+    const currentMonth = String(new Date().getMonth()).padStart(2, "0");
+    const currentDay = String(new Date().getDay()).padStart(2, "0");
+    const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+
     const data = {
-      contactDate: new Date().toString(),
+      contactDate: currentDate,
       contactSource,
       contactType,
       dealerType,
